@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		5260819D18F8E32F00DDC21D /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5260819C18F8E32F00DDC21D /* CoreData.framework */; };
 		52CCB0AF18EB98F600A08DBD /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 52CCB0AE18EB98F600A08DBD /* Foundation.framework */; };
 		52CCB0B118EB98F600A08DBD /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 52CCB0B018EB98F600A08DBD /* CoreGraphics.framework */; };
 		52CCB0B318EB98F600A08DBD /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 52CCB0B218EB98F600A08DBD /* UIKit.framework */; };
@@ -34,6 +35,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		5260819C18F8E32F00DDC21D /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = System/Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
 		52CCB0AB18EB98F600A08DBD /* Washington's Rules.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Washington's Rules.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		52CCB0AE18EB98F600A08DBD /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		52CCB0B018EB98F600A08DBD /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -60,6 +62,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				5260819D18F8E32F00DDC21D /* CoreData.framework in Frameworks */,
 				52CCB0B118EB98F600A08DBD /* CoreGraphics.framework in Frameworks */,
 				52CCB0B318EB98F600A08DBD /* UIKit.framework in Frameworks */,
 				52CCB0AF18EB98F600A08DBD /* Foundation.framework in Frameworks */,
@@ -101,6 +104,7 @@
 		52CCB0AD18EB98F600A08DBD /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				5260819C18F8E32F00DDC21D /* CoreData.framework */,
 				52CCB0AE18EB98F600A08DBD /* Foundation.framework */,
 				52CCB0B018EB98F600A08DBD /* CoreGraphics.framework */,
 				52CCB0B218EB98F600A08DBD /* UIKit.framework */,
@@ -448,6 +452,7 @@
 				52CCB0D918EB98F700A08DBD /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		52CCB0DA18EB98F700A08DBD /* Build configuration list for PBXNativeTarget "Washington's RulesTests" */ = {
 			isa = XCConfigurationList;
@@ -456,6 +461,7 @@
 				52CCB0DC18EB98F700A08DBD /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
