@@ -62,7 +62,9 @@
                         </constraints>
                     </view>
                     <connections>
+                        <outlet property="RuleCardRule" destination="kDH-5m-bgM" id="6oh-bp-C0d"/>
                         <outlet property="ruleCard" destination="gFI-jF-RfF" id="ND0-bu-QiF"/>
+                        <outlet property="ruleCardRule" destination="kDH-5m-bgM" id="3Pq-yE-yUu"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="5M3-hl-9kY" userLabel="First Responder" sceneMemberID="firstResponder"/>

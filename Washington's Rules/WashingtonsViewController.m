@@ -7,6 +7,7 @@
 //
 
 #import "WashingtonsViewController.h"
+#import "WashingtonsAppDelegate.h"
 
 @interface WashingtonsViewController ()
 @end
@@ -30,6 +31,32 @@
     
     // Give the Rule Card rounded corners. The Right Way™ to do this is probably to create a Card class that inherits from UIView and make that the class that self.ruleCard uses.
     [self.ruleCard.layer setCornerRadius:cardCornerRadius];
+    
+    // Get a random quote from the data store
+    WashingtonsAppDelegate *appDelegate = [[UIApplication sharedApplication] delegate];
+    NSManagedObjectContext *managedObjectContext = appDelegate.managedObjectContext;
+    
+    NSEntityDescription *entityDesc =
+    [NSEntityDescription entityForName:@"Rules"
+                inManagedObjectContext:managedObjectContext];
+    
+    NSFetchRequest *request = [[NSFetchRequest alloc] init];
+    [request setEntity:entityDesc];
+    
+    NSError *error;
+    NSUInteger objectCount = [managedObjectContext countForFetchRequest:request error:&error];
+    
+    NSLog(@"object count is %lu", (unsigned long)objectCount);
+    int randNum = arc4random() % (objectCount + 1);
+    
+    NSManagedObject *result = [[managedObjectContext executeFetchRequest:request error:&error] objectAtIndex:randNum];
+    NSString *randomRuleText = [result valueForKey:@"text"];
+    
+    // Set the quote
+    [self.ruleCardRule setSelectable:YES];
+    [self.ruleCardRule setText:randomRuleText];
+    [self.ruleCardRule setSelectable:NO];
+
 }
 
 - (void)didReceiveMemoryWarning
