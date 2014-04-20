@@ -21,11 +21,16 @@
 {
     
     /* To generate a new set of default rules:
-        1. Modify createStarterDataSet: to include your new data
-        2. Uncomment this line
-        3. Run
-        4. Go find the WashingtonsDataModel.sqlite in iPhone Simulator's Documents folder and overwrite WashingtonsDefaultData.sqlite with it
-        5. Comment out this line again
+        1. Modify data model.
+        2. Comment switch persistentStoreCoordinator messages
+        3. Clear the iPhone Simulator's Documents folder
+        4. Run the simulator to build the database anew
+        5. Comment switch persistentStoreCoordinator again
+        6. Modify createStarterDataSet: to include your new data
+        7. Uncomment this line
+        8. Run
+        8. Go find the WashingtonsDataModel.sqlite in iPhone Simulator's Documents folder and overwrite WashingtonsDefaultData.sqlite with it
+        9. Comment out this line again
      */
     //[self createStarterDataSet];
 
@@ -105,8 +110,36 @@
     return _managedObjectModel;
 }
 
+
+
+
 // Returns the persistent store coordinator for the application.
 // If the coordinator doesn't already exist, it is created and the application's store added to it.
+
+/*
+- (NSPersistentStoreCoordinator *)persistentStoreCoordinator
+{
+    if (_persistentStoreCoordinator != nil) {
+        return _persistentStoreCoordinator;
+    }
+    
+    NSURL *storeURL = [[self applicationDocumentsDirectory] URLByAppendingPathComponent:@"WashingtonsDataModel.sqlite"];
+    
+    NSError *error = nil;
+    _persistentStoreCoordinator = [[NSPersistentStoreCoordinator alloc] initWithManagedObjectModel:[self managedObjectModel]];
+    if (![_persistentStoreCoordinator addPersistentStoreWithType:NSSQLiteStoreType configuration:nil URL:storeURL options:nil error:&error]) {
+ 
+        NSLog(@"Unresolved error %@, %@", error, [error userInfo]);
+        abort();
+    }
+    
+    return _persistentStoreCoordinator;
+}
+
+*/
+
+
+
 - (NSPersistentStoreCoordinator *)persistentStoreCoordinator
 {
     @synchronized (self)
@@ -146,6 +179,7 @@
     }
 }
 
+
 #pragma mark - Application's Documents directory
 
 // Returns the URL to the application's Documents directory.
@@ -160,7 +194,7 @@
 - (NSString *)getValueOfAppSettingNamed:(NSString *)name
 {
     NSEntityDescription *entityDesc =
-    [NSEntityDescription entityForName:@"Settings"
+    [NSEntityDescription entityForName:@"Setting"
                 inManagedObjectContext:[self managedObjectContext]];
     
     NSFetchRequest *request = [[NSFetchRequest alloc] init];
@@ -179,7 +213,7 @@
 {
 
     NSEntityDescription *entityDesc =
-    [NSEntityDescription entityForName:@"Rules"
+    [NSEntityDescription entityForName:@"Rule"
                 inManagedObjectContext:[self managedObjectContext]];
     
     NSFetchRequest *request = [[NSFetchRequest alloc] init];
@@ -326,7 +360,7 @@
     
     // Saving each rule
     for (id ruleText in defaultRuleTexts) {
-        newRule = [NSEntityDescription insertNewObjectForEntityForName:@"Rules" inManagedObjectContext:context];
+        newRule = [NSEntityDescription insertNewObjectForEntityForName:@"Rule" inManagedObjectContext:context];
 
         [newRule setValue:ruleText forKey:@"text"];
         if (![context save:&error]) { NSLog(@"Error saving: %@", error); }
