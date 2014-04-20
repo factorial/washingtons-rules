@@ -15,7 +15,7 @@
 @synthesize persistentStoreCoordinator = _persistentStoreCoordinator;
 
 @synthesize currentRule = _currentRule;
-
+@synthesize appSettings = _appSettings;
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
@@ -155,6 +155,26 @@
 }
 
 #pragma mark - Washington's Business Logic
+
+// Returns the value of an application setting
+- (NSString *)getValueOfAppSettingNamed:(NSString *)name
+{
+    NSEntityDescription *entityDesc =
+    [NSEntityDescription entityForName:@"Settings"
+                inManagedObjectContext:[self managedObjectContext]];
+    
+    NSFetchRequest *request = [[NSFetchRequest alloc] init];
+    [request setEntity:entityDesc];
+
+//    NSPredicate *pred = [NSPredicate predicateWithFormat:@"(name = %@)", _name.text];
+    
+    NSError *error;
+    
+    return @"Settings fetch not yet implemented.";
+
+}
+
+// Returns the text of a randomly chosen rule in the entire data set.
 - (NSString *)getRandomRuleText
 {
 

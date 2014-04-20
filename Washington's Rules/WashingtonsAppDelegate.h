@@ -17,6 +17,7 @@
 
 
 @property (readonly, strong, nonatomic) NSString *currentRule;
+@property (readonly, strong, nonatomic) NSDictionary *appSettings;
 
 - (void)saveContext;
 - (NSURL *)applicationDocumentsDirectory;
