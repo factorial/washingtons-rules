@@ -14,6 +14,9 @@
 @synthesize managedObjectModel = _managedObjectModel;
 @synthesize persistentStoreCoordinator = _persistentStoreCoordinator;
 
+@synthesize currentRule = _currentRule;
+
+
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
     
@@ -26,7 +29,7 @@
      */
     //[self createStarterDataSet];
 
-    
+    _currentRule = [self getRandomRuleText];
 
     return YES;
 }
@@ -151,6 +154,30 @@
     return [[[NSFileManager defaultManager] URLsForDirectory:NSDocumentDirectory inDomains:NSUserDomainMask] lastObject];
 }
 
+#pragma mark - Washington's Business Logic
+- (NSString *)getRandomRuleText
+{
+
+    NSEntityDescription *entityDesc =
+    [NSEntityDescription entityForName:@"Rules"
+                inManagedObjectContext:[self managedObjectContext]];
+    
+    NSFetchRequest *request = [[NSFetchRequest alloc] init];
+    [request setEntity:entityDesc];
+    
+    NSError *error;
+    NSUInteger objectCount = [[self managedObjectContext] countForFetchRequest:request error:&error];
+    
+    NSLog(@"object count is %lu", (unsigned long)objectCount);
+    int randNum = arc4random() % (objectCount + 1);
+    
+    NSManagedObject *result = [[[self managedObjectContext ] executeFetchRequest:request error:&error] objectAtIndex:randNum];
+    NSString *randomRuleText = [result valueForKey:@"text"];
+    
+    return randomRuleText;
+
+}
+
 #pragma mark - Utility Functions
 
 
@@ -163,7 +190,7 @@
     NSManagedObject *newRule;
     NSError *error;
     
-    // Default data begins here
+    // Default rules data begins here
     NSArray *defaultRuleTexts = @[
                                   @"Every action done in company ought to be with some sign of respect to those that are present.",
                                   @"When in company, put not your hands to any part of the body not usually discovered.",

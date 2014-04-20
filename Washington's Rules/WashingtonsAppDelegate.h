@@ -15,7 +15,11 @@
 @property (readonly, strong, nonatomic) NSManagedObjectModel *managedObjectModel;
 @property (readonly, strong, nonatomic) NSPersistentStoreCoordinator *persistentStoreCoordinator;
 
+
+@property (readonly, strong, nonatomic) NSString *currentRule;
+
 - (void)saveContext;
 - (NSURL *)applicationDocumentsDirectory;
+
 
 @end
