@@ -7,6 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		520A9E6519022E81000A650C /* WashingtonsDataModel.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 520A9E6319022E81000A650C /* WashingtonsDataModel.xcdatamodeld */; };
+		520A9E67190242D7000A650C /* WashingtonsDefaultData.sqlite in Resources */ = {isa = PBXBuildFile; fileRef = 520A9E66190242D7000A650C /* WashingtonsDefaultData.sqlite */; };
+		5260819D18F8E32F00DDC21D /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5260819C18F8E32F00DDC21D /* CoreData.framework */; };
+		52CBBB05190AAD3F00EB9B48 /* WashingtonsConstants.m in Sources */ = {isa = PBXBuildFile; fileRef = 52CBBB04190AAD3F00EB9B48 /* WashingtonsConstants.m */; };
 		52CCB0AF18EB98F600A08DBD /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 52CCB0AE18EB98F600A08DBD /* Foundation.framework */; };
 		52CCB0B118EB98F600A08DBD /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 52CCB0B018EB98F600A08DBD /* CoreGraphics.framework */; };
 		52CCB0B318EB98F600A08DBD /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 52CCB0B218EB98F600A08DBD /* UIKit.framework */; };
@@ -34,6 +38,11 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		520A9E6419022E81000A650C /* WashingtonsDataModel.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = WashingtonsDataModel.xcdatamodel; sourceTree = "<group>"; };
+		520A9E66190242D7000A650C /* WashingtonsDefaultData.sqlite */ = {isa = PBXFileReference; lastKnownFileType = file; path = WashingtonsDefaultData.sqlite; sourceTree = "<group>"; };
+		5260819C18F8E32F00DDC21D /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = System/Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
+		52CBBB03190AAD3F00EB9B48 /* WashingtonsConstants.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WashingtonsConstants.h; sourceTree = "<group>"; };
+		52CBBB04190AAD3F00EB9B48 /* WashingtonsConstants.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WashingtonsConstants.m; sourceTree = "<group>"; };
 		52CCB0AB18EB98F600A08DBD /* Washington's Rules.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Washington's Rules.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		52CCB0AE18EB98F600A08DBD /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		52CCB0B018EB98F600A08DBD /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -60,6 +69,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				5260819D18F8E32F00DDC21D /* CoreData.framework in Frameworks */,
 				52CCB0B118EB98F600A08DBD /* CoreGraphics.framework in Frameworks */,
 				52CCB0B318EB98F600A08DBD /* UIKit.framework in Frameworks */,
 				52CCB0AF18EB98F600A08DBD /* Foundation.framework in Frameworks */,
@@ -101,6 +111,7 @@
 		52CCB0AD18EB98F600A08DBD /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				5260819C18F8E32F00DDC21D /* CoreData.framework */,
 				52CCB0AE18EB98F600A08DBD /* Foundation.framework */,
 				52CCB0B018EB98F600A08DBD /* CoreGraphics.framework */,
 				52CCB0B218EB98F600A08DBD /* UIKit.framework */,
@@ -114,8 +125,11 @@
 			children = (
 				52CCB0E518EBA25200A08DBD /* WashingtonsViewController.h */,
 				52CCB0E618EBA25200A08DBD /* WashingtonsViewController.m */,
+				52CBBB03190AAD3F00EB9B48 /* WashingtonsConstants.h */,
+				52CBBB04190AAD3F00EB9B48 /* WashingtonsConstants.m */,
 				52CCB0BD18EB98F600A08DBD /* WashingtonsAppDelegate.h */,
 				52CCB0BE18EB98F600A08DBD /* WashingtonsAppDelegate.m */,
+				520A9E66190242D7000A650C /* WashingtonsDefaultData.sqlite */,
 				52CCB0C018EB98F600A08DBD /* Images.xcassets */,
 				52CCB0B518EB98F600A08DBD /* Supporting Files */,
 				52CCB0DD18EB992300A08DBD /* Storyboard.storyboard */,
@@ -130,6 +144,7 @@
 				52CCB0B718EB98F600A08DBD /* InfoPlist.strings */,
 				52CCB0BA18EB98F600A08DBD /* main.m */,
 				52CCB0BC18EB98F600A08DBD /* Washington's Rules-Prefix.pch */,
+				520A9E6319022E81000A650C /* WashingtonsDataModel.xcdatamodeld */,
 			);
 			name = "Supporting Files";
 			sourceTree = "<group>";
@@ -229,6 +244,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				52CCB0B918EB98F600A08DBD /* InfoPlist.strings in Resources */,
+				520A9E67190242D7000A650C /* WashingtonsDefaultData.sqlite in Resources */,
 				52CCB0C118EB98F600A08DBD /* Images.xcassets in Resources */,
 				52CCB0DE18EB992300A08DBD /* Storyboard.storyboard in Resources */,
 			);
@@ -252,6 +268,8 @@
 				52CCB0BF18EB98F600A08DBD /* WashingtonsAppDelegate.m in Sources */,
 				52CCB0E718EBA25200A08DBD /* WashingtonsViewController.m in Sources */,
 				52CCB0BB18EB98F600A08DBD /* main.m in Sources */,
+				52CBBB05190AAD3F00EB9B48 /* WashingtonsConstants.m in Sources */,
+				520A9E6519022E81000A650C /* WashingtonsDataModel.xcdatamodeld in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -448,6 +466,7 @@
 				52CCB0D918EB98F700A08DBD /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		52CCB0DA18EB98F700A08DBD /* Build configuration list for PBXNativeTarget "Washington's RulesTests" */ = {
 			isa = XCConfigurationList;
@@ -456,8 +475,22 @@
 				52CCB0DC18EB98F700A08DBD /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCVersionGroup section */
+		520A9E6319022E81000A650C /* WashingtonsDataModel.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				520A9E6419022E81000A650C /* WashingtonsDataModel.xcdatamodel */,
+			);
+			currentVersion = 520A9E6419022E81000A650C /* WashingtonsDataModel.xcdatamodel */;
+			path = WashingtonsDataModel.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
 	};
 	rootObject = 52CCB0A318EB98F600A08DBD /* Project object */;
 }
