@@ -304,6 +304,11 @@
 - (void)updateCurrentRule
 {
     _currentRule = [self randomRuleText];
+    
+    // Update the view
+
+    
+    // Remember in settings the rule and day it was viewed
     NSCalendar* cal = [NSCalendar currentCalendar];
     NSDateComponents* comp = [cal components:NSWeekdayCalendarUnit fromDate:[NSDate date]];
     NSString *today = [[NSString alloc] initWithFormat:@"%d", [comp weekday]];

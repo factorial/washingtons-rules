@@ -23,11 +23,15 @@
     return self;
 }
 
+
 - (void)viewDidLoad
 {
     [super viewDidLoad];
     
     CGFloat cardCornerRadius = 15.0;
+    
+    // Register to notify the view controller whenever the app becomes active again
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(didBecomeActive:) name:UIApplicationDidBecomeActiveNotification object:nil];
     
     // Give the Rule Card rounded corners. The Right Way™ to do this is probably to create a Card class that inherits from UIView and make that the class that self.ruleCard uses.
     [self.ruleCard.layer setCornerRadius:cardCornerRadius];
@@ -42,11 +46,25 @@
 
 }
 
+#pragma mark - Application Notification Handlers
+
+- (void)didBecomeActive:(NSNotification *)notification
+{
+    // Set the quote
+    WashingtonsAppDelegate *appDelegate = [[UIApplication sharedApplication] delegate];
+
+    [self.ruleCardRule setSelectable:YES];
+    [self.ruleCardRule setText:[appDelegate currentRule]];
+    [self.ruleCardRule setSelectable:NO];
+}
+
+
 - (void)didReceiveMemoryWarning
 {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
 }
+
 
 /*
 #pragma mark - Navigation
