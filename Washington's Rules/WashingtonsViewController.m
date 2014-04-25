@@ -32,7 +32,7 @@
     // Give the Rule Card rounded corners. The Right Way™ to do this is probably to create a Card class that inherits from UIView and make that the class that self.ruleCard uses.
     [self.ruleCard.layer setCornerRadius:cardCornerRadius];
     
-    // Get a random quote from the data store
+    // Get the current rule from app delegate. Delegate will update the rule when appropriate.
     WashingtonsAppDelegate *appDelegate = [[UIApplication sharedApplication] delegate];
     
     // Set the quote

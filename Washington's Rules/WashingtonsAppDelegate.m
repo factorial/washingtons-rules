@@ -17,6 +17,16 @@
 @synthesize currentRule = _currentRule;
 @synthesize appSettings = _appSettings;
 
+- (NSString *)currentRule
+{
+    // If currentRule hasn't been set yet, go ahead and update it.
+    if (_currentRule == nil) {
+        [self initializeCurrentRule];
+    }
+    
+    return _currentRule;
+}
+
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
     
@@ -34,8 +44,6 @@
      */
     //[self createStarterDataSet];
 
-    _currentRule = [self getRandomRuleText];
-
     return YES;
 }
 
@@ -49,6 +57,13 @@
 {
     // Use this method to release shared resources, save user data, invalidate timers, and store enough application state information to restore your application to its current state in case it is terminated later. 
     // If your application supports background execution, this method is called instead of applicationWillTerminate: when the user quits.
+    
+    // Remember what day it is for rule update purposes:
+    NSCalendar* cal = [NSCalendar currentCalendar];
+    NSDateComponents* comp = [cal components:NSWeekdayCalendarUnit fromDate:[NSDate date]];
+
+    NSString *today = [[NSString alloc] initWithFormat:@"%d", [comp weekday] ] ;
+    [self setAppSettingNamed:AppSetting_LastViewedDay to:today];
 }
 
 - (void)applicationWillEnterForeground:(UIApplication *)application
@@ -59,11 +74,18 @@
 - (void)applicationDidBecomeActive:(UIApplication *)application
 {
     // Restart any tasks that were paused (or not yet started) while the application was inactive. If the application was previously in the background, optionally refresh the user interface.
+    [self updateCurrentRuleIfNeeded];
 }
 
 - (void)applicationWillTerminate:(UIApplication *)application
 {
     // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
+    NSCalendar* cal = [NSCalendar currentCalendar];
+    NSDateComponents* comp = [cal components:NSWeekdayCalendarUnit fromDate:[NSDate date]];
+    
+    NSString *today = [[NSString alloc] initWithFormat:@"%d", [comp weekday] ] ;
+    [self setAppSettingNamed:AppSetting_LastViewedDay to:today];
+
 }
 
 - (void)saveContext
@@ -188,28 +210,111 @@
     return [[[NSFileManager defaultManager] URLsForDirectory:NSDocumentDirectory inDomains:NSUserDomainMask] lastObject];
 }
 
-#pragma mark - Washington's Business Logic
+#pragma mark - Washington's Data methods
+
+// Private function for saving application settings
+- (BOOL)setAppSettingNamed:(NSString *)name to:(NSString *)value
+{
+    BOOL returnValue;
+    
+    NSEntityDescription *entityDesc = [NSEntityDescription entityForName:@"Setting"  inManagedObjectContext:[self managedObjectContext]];
+    NSFetchRequest *request = [[NSFetchRequest alloc]init];
+    NSPredicate *pred = [NSPredicate predicateWithFormat:@"(name = %@)", name];
+    [request setEntity:entityDesc];
+    [request setPredicate:pred];
+
+    NSError *error;
+    NSArray *matchedSettings = [[self managedObjectContext] executeFetchRequest:request error:&error];
+
+    NSManagedObject *setting;
+    if ([matchedSettings count] == 0) {
+        NSLog(@"Saving setting named %@ for the first time. Value is %@.", name, value);
+        setting = [NSEntityDescription insertNewObjectForEntityForName:@"Setting" inManagedObjectContext:[self managedObjectContext]];
+        
+        [setting setValue:name forKey:@"name"];
+    } else {
+        setting = matchedSettings[0];
+    }
+
+    [setting setValue:value forKey:@"value"];
+    if (![[self managedObjectContext] save:&error]) {
+        NSLog(@"Error saving setting named: %@ with value: %@. Error: %@", name, value, error);
+        returnValue = NO;
+    }
+
+    return YES;
+}
 
 // Returns the value of an application setting
-- (NSString *)getValueOfAppSettingNamed:(NSString *)name
+- (NSString *)valueForAppSettingNamed:(NSString *)name
 {
+    NSString *settingValue;
     NSEntityDescription *entityDesc =
     [NSEntityDescription entityForName:@"Setting"
                 inManagedObjectContext:[self managedObjectContext]];
     
     NSFetchRequest *request = [[NSFetchRequest alloc] init];
+    NSPredicate *pred = [NSPredicate predicateWithFormat:@"(name = %@)", name];
     [request setEntity:entityDesc];
-
-//    NSPredicate *pred = [NSPredicate predicateWithFormat:@"(name = %@)", _name.text];
+    [request setPredicate:pred];
     
     NSError *error;
+    NSArray *matchedSettings = [[self managedObjectContext] executeFetchRequest:request error:&error];
     
-    return @"Settings fetch not yet implemented.";
+    if ([matchedSettings count] == 0) {
+        NSLog(@"setting named %@ was requested but not found.", name);
+        settingValue = nil;
+    } else {
+        settingValue = [matchedSettings[0] valueForKey:@"value"];
+    }
+    
+    return settingValue;
+}
+
+#pragma mark - Rule methods
+
+// Initializes current rule - sets it to last viewed rule then updates if needed
+- (void)initializeCurrentRule
+{
+    NSString *lastViewedRule = [self valueForAppSettingNamed:AppSetting_LastViewedRuleText];
+    if (lastViewedRule == nil) {
+        [self updateCurrentRule];
+    } else {
+        _currentRule = lastViewedRule;
+    }
+    
+    [self updateCurrentRuleIfNeeded];
+}
+
+// Updates the current rule only if it's a new day since last updating rule
+- (void)updateCurrentRuleIfNeeded
+{
+    NSString *lastViewedDay = [self valueForAppSettingNamed:AppSetting_LastViewedDay];    
+    NSCalendar* cal = [NSCalendar currentCalendar];
+    NSDateComponents* comp = [cal components:NSWeekdayCalendarUnit fromDate:[NSDate date]];
+
+    // If it's not the same day as when last viewed, change the rule.
+    if ([comp weekday] != [lastViewedDay integerValue]) {
+        [self updateCurrentRule];
+    }
+
+}
+
+// Updates the current rule. Call this any time you need to 
+- (void)updateCurrentRule
+{
+    _currentRule = [self randomRuleText];
+    NSCalendar* cal = [NSCalendar currentCalendar];
+    NSDateComponents* comp = [cal components:NSWeekdayCalendarUnit fromDate:[NSDate date]];
+    NSString *today = [[NSString alloc] initWithFormat:@"%d", [comp weekday]];
+    
+    [self setAppSettingNamed:AppSetting_LastViewedDay to:today];
+    [self setAppSettingNamed:AppSetting_LastViewedRuleText to:_currentRule];
 
 }
 
 // Returns the text of a randomly chosen rule in the entire data set.
-- (NSString *)getRandomRuleText
+- (NSString *)randomRuleText
 {
 
     NSEntityDescription *entityDesc =
