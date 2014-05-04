@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		520A9E6519022E81000A650C /* WashingtonsDataModel.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 520A9E6319022E81000A650C /* WashingtonsDataModel.xcdatamodeld */; };
 		520A9E67190242D7000A650C /* WashingtonsDefaultData.sqlite in Resources */ = {isa = PBXBuildFile; fileRef = 520A9E66190242D7000A650C /* WashingtonsDefaultData.sqlite */; };
+		522EA404190B628D00F1D593 /* washington-cropped.png in Resources */ = {isa = PBXBuildFile; fileRef = 522EA403190B628D00F1D593 /* washington-cropped.png */; };
 		5260819D18F8E32F00DDC21D /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5260819C18F8E32F00DDC21D /* CoreData.framework */; };
 		52CBBB05190AAD3F00EB9B48 /* WashingtonsConstants.m in Sources */ = {isa = PBXBuildFile; fileRef = 52CBBB04190AAD3F00EB9B48 /* WashingtonsConstants.m */; };
 		52CCB0AF18EB98F600A08DBD /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 52CCB0AE18EB98F600A08DBD /* Foundation.framework */; };
@@ -40,6 +41,7 @@
 /* Begin PBXFileReference section */
 		520A9E6419022E81000A650C /* WashingtonsDataModel.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = WashingtonsDataModel.xcdatamodel; sourceTree = "<group>"; };
 		520A9E66190242D7000A650C /* WashingtonsDefaultData.sqlite */ = {isa = PBXFileReference; lastKnownFileType = file; path = WashingtonsDefaultData.sqlite; sourceTree = "<group>"; };
+		522EA403190B628D00F1D593 /* washington-cropped.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "washington-cropped.png"; sourceTree = "<group>"; };
 		5260819C18F8E32F00DDC21D /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = System/Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
 		52CBBB03190AAD3F00EB9B48 /* WashingtonsConstants.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WashingtonsConstants.h; sourceTree = "<group>"; };
 		52CBBB04190AAD3F00EB9B48 /* WashingtonsConstants.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WashingtonsConstants.m; sourceTree = "<group>"; };
@@ -140,6 +142,7 @@
 		52CCB0B518EB98F600A08DBD /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				522EA403190B628D00F1D593 /* washington-cropped.png */,
 				52CCB0B618EB98F600A08DBD /* Washington's Rules-Info.plist */,
 				52CCB0B718EB98F600A08DBD /* InfoPlist.strings */,
 				52CCB0BA18EB98F600A08DBD /* main.m */,
@@ -243,6 +246,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				522EA404190B628D00F1D593 /* washington-cropped.png in Resources */,
 				52CCB0B918EB98F600A08DBD /* InfoPlist.strings in Resources */,
 				520A9E67190242D7000A650C /* WashingtonsDefaultData.sqlite in Resources */,
 				52CCB0C118EB98F600A08DBD /* Images.xcassets in Resources */,

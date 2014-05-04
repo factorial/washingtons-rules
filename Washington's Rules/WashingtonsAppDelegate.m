@@ -332,7 +332,6 @@
     NSError *error;
     NSUInteger objectCount = [[self managedObjectContext] countForFetchRequest:request error:&error];
     
-    NSLog(@"object count is %lu", (unsigned long)objectCount);
     int randNum = arc4random() % (objectCount + 1);
     
     NSManagedObject *result = [[[self managedObjectContext ] executeFetchRequest:request error:&error] objectAtIndex:randNum];
