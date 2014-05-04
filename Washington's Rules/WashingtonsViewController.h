@@ -9,7 +9,6 @@
 #import <UIKit/UIKit.h>
 
 @interface WashingtonsViewController : UIViewController
-@property (strong, nonatomic) IBOutlet UIView *ruleCard;
 @property (strong, nonatomic) IBOutlet UITextView *ruleCardRule;
 
 @end
