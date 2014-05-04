@@ -26,11 +26,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Washington&apos;s Rules/WashingtonsAppDelegate.m"
-            timestampString = "419734115.510651"
+            timestampString = "420907256.13282"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "262"
-            endingLineNumber = "262"
+            startingLineNumber = "237"
+            endingLineNumber = "237"
             landmarkName = "-valueForAppSettingNamed:"
             landmarkType = "5">
          </BreakpointContent>
@@ -90,11 +90,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Washington&apos;s Rules/WashingtonsAppDelegate.m"
-            timestampString = "420156834.737908"
+            timestampString = "420907256.13282"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "78"
-            endingLineNumber = "78"
+            startingLineNumber = "81"
+            endingLineNumber = "81"
             landmarkName = "-applicationDidBecomeActive:"
             landmarkType = "5">
          </BreakpointContent>
@@ -106,7 +106,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Washington&apos;s Rules/WashingtonsAppDelegate.m"
-            timestampString = "420156836.452503"
+            timestampString = "420907256.13282"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "77"

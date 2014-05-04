@@ -33,8 +33,8 @@
     // Register to notify the view controller whenever the app becomes active again
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(didBecomeActive:) name:UIApplicationDidBecomeActiveNotification object:nil];
     
-    // Give the Rule Card rounded corners. The Right Way™ to do this is probably to create a Card class that inherits from UIView and make that the class that self.ruleCard uses.
-    [self.ruleCard.layer setCornerRadius:cardCornerRadius];
+    // Give the Rule Card rounded corners. The Right Way™ to do this is probably to create a Card class that inherits from UIView and make that the class that self.ruleCardRule uses.
+    [self.ruleCardRule.layer setCornerRadius:cardCornerRadius];
     
     // Get the current rule from app delegate. Delegate will update the rule when appropriate.
     WashingtonsAppDelegate *appDelegate = [[UIApplication sharedApplication] delegate];
