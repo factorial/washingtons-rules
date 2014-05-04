@@ -77,7 +77,7 @@
     [self updateCurrentRuleIfNeeded];
     
     // DEBUG: ensure a new rule each launch, useful for UI design
-    [self updateCurrentRule];
+    //[self updateCurrentRule];
 }
 
 - (void)applicationWillTerminate:(UIApplication *)application
