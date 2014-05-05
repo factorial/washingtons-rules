@@ -131,7 +131,6 @@
 				52CBBB04190AAD3F00EB9B48 /* WashingtonsConstants.m */,
 				52CCB0BD18EB98F600A08DBD /* WashingtonsAppDelegate.h */,
 				52CCB0BE18EB98F600A08DBD /* WashingtonsAppDelegate.m */,
-				520A9E66190242D7000A650C /* WashingtonsDefaultData.sqlite */,
 				52CCB0C018EB98F600A08DBD /* Images.xcassets */,
 				52CCB0B518EB98F600A08DBD /* Supporting Files */,
 				52CCB0DD18EB992300A08DBD /* Storyboard.storyboard */,
@@ -142,6 +141,7 @@
 		52CCB0B518EB98F600A08DBD /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				520A9E66190242D7000A650C /* WashingtonsDefaultData.sqlite */,
 				522EA403190B628D00F1D593 /* washington-cropped.png */,
 				52CCB0B618EB98F600A08DBD /* Washington's Rules-Info.plist */,
 				52CCB0B718EB98F600A08DBD /* InfoPlist.strings */,

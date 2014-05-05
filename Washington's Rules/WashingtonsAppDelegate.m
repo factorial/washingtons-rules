@@ -136,6 +136,31 @@
 }
 
 
+// Only use this persistent store coordinator when rebuilding the default data set.
+// TODO: find a much better way to build the default data set. Probably just needs
+// to be a separate child-project which creates a .sqlite db.
+
+/*
+  - (NSPersistentStoreCoordinator *)persistentStoreCoordinator
+  {
+      if (_persistentStoreCoordinator != nil) {
+          return _persistentStoreCoordinator;
+      }
+ 
+      NSURL *storeURL = [[self applicationDocumentsDirectory] URLByAppendingPathComponent:@"WashingtonsDataModel.sqlite"];
+ 
+      NSError *error = nil;
+      _persistentStoreCoordinator = [[NSPersistentStoreCoordinator alloc] initWithManagedObjectModel:[self managedObjectModel]];
+      if (![_persistentStoreCoordinator addPersistentStoreWithType:NSSQLiteStoreType configuration:nil URL:storeURL options:nil error:&error]) {
+ 
+          NSLog(@"Unresolved error %@, %@", error, [error userInfo]);
+          abort();
+      }
+ 
+      return _persistentStoreCoordinator;
+  }
+*/
+
 
 - (NSPersistentStoreCoordinator *)persistentStoreCoordinator
 {
